@@ -159,8 +159,8 @@ def event_handle(event):
             replyObj = TextSendMessage(text="ไม่หิวค่ะ")
             line_bot_api.reply_message(rtoken, replyObj)
         else :
-            headers = request.headers
-            json_headers = json.dumps({k:v for k, v in headers.items()})
+            #headers = request.headers
+            #json_headers = json.dumps({k:v for k, v in headers.items()})
             '''
             json_line = request.get_json(force=False,cache=False)
             json_line = json.dumps(json_line)
@@ -178,8 +178,8 @@ def event_handle(event):
             crl.perform()
             crl.close()
             '''
-replyObj = TextSendMessage(text=json_headers)
-line_bot_api.reply_message(rtoken, replyObj)
+            replyObj = TextSendMessage(text=msg)
+            line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
             message_content = line_bot_api.get_message_content(event['message']['id'])
